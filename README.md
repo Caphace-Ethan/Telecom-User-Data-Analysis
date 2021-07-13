@@ -1,2 +1,2 @@
-# Telecom-User-Data-Analysis
+# Telecommunication User Data Analysis
 User Analytics in the Telecommunication Industry
