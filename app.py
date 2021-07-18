@@ -70,7 +70,7 @@ def DataUsagePerAppChart():
     app_data_list = ['social_media_data', 'google_data','email_data', 'youtube_data', 
                      'netflix_data', 'gaming_data', 'total_dl_ul']
     for column in app_data_list:                 
-        dfLangCount = pd.DataFrame({'Data_Usage': df.groupby(['Handset Type'])[column].sum()}).reset_index()
+        dfLangCount = pd.DataFrame({'Data_Usage': df.groupby(['Handset Type'])[column].sum()}).head(10).reset_index()
         dfLangCount["Handset Type"] = dfLangCount["Handset Type"].astype(str)
         dfLangCount = dfLangCount.sort_values("Data_Usage", ascending=False)
         dfLangCount.loc[dfLangCount['Data_Usage'] < 10, 'Handset Type'] = 'Other Handsets'
