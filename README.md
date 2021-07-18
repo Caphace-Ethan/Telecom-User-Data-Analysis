@@ -5,4 +5,4 @@ User Data Analytics in the Telecommunication Industry
 
 The Analysis is done using Jupyter notebook, located on 'notebook' folder
 
-#### Data Visualization is done using Streamlit application, and its implementation is in 'scripts' folder
+#### Data Visualization is done using Streamlit application, and its implementation is in 'app.py' file
