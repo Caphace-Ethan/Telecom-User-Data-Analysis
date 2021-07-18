@@ -1,9 +1,9 @@
-CREATE TABLE TelecomUserDataAnalysis
+CREATE TABLE TelecomUserData
 (
     bearer_id FLOAT PRIMARY KEY,
-    Start TEXT NOT NULL,
+    Start_time TEXT NOT NULL,
     Start_ms FLOAT NOT NULL,
-    end TEXT NOT NULL,
+    end_time TEXT NOT NULL,
     end_ms FLOAT NOT NULL,
     IMSI FLOAT NOT NULL,
     MSISDN_Number  FLOAT NOT NULL,
