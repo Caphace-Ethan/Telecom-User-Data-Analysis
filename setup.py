@@ -12,19 +12,19 @@ requirements = ['pandas>=1.1.0', 'numpy>=1.19.0', ]
 test_requirements = ['pytest>=3', ]
 
 setup(
-    author="10 Academy",
-    email="train@10academy.org",
+    author="Ethani Caphace",
+    email="ethancaphace@gmail.com",
     python_requires='>=3.6',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
-        'Intended Audience :: Developers',
+        'Development Status :: Junior ML Engineer',
+        'Intended Audience :: World',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    description="A Repository structure for all your project",
+    description="User Data Analytics in the Telecommunication Industry",
     install_requires=requirements,
     long_description=readme,
     include_package_data=True,
@@ -33,7 +33,7 @@ setup(
     packages=find_packages(include=['scripts', 'scripts.*']),
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/10xac/PythonPackageStructure',
+    url='https://github.com/Caphace-Ethan/Telecom-User-Data-Analysis',
     version='0.1.0',
     zip_safe=False,
 )
