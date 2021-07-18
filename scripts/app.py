@@ -52,26 +52,38 @@ def stBarChart():
     dfCount = dfCount.sort_values("Session_count", ascending=False)
 
     num = st.slider("Select number of Rankings", 0, 50, 5)
-    title = f"Top {num} Ranking By Number of tweets"
+    title = f"Top {num} Sessions Ranking By User"
     barChart(dfCount.head(num), title, "msisdn_number", "Session_count")
 
+def DataUsageBarChart():
+    df = loadData()
+    dfCount = pd.DataFrame({'Session_count': df.groupby(['handset_type'])['bearer_id'].count()}).reset_index()
+    dfCount["handset_type"] = dfCount["handset_type"].astype(str)
+    dfCount = dfCount.sort_values("Session_count", ascending=False)
 
-# def langPie():
-    # df = loadData()
-    # dfLangCount = pd.DataFrame({'Session_count': df.groupby(['language'])['clean_text'].count()}).reset_index()
-    # dfLangCount["language"] = dfLangCount["language"].astype(str)
-    # dfLangCount = dfLangCount.sort_values("Tweet_count", ascending=False)
-    # dfLangCount.loc[dfLangCount['Tweet_count'] < 10, 'lang'] = 'Other languages'
-    # st.title(" Tweets Language pie chart")
-    # fig = px.pie(dfLangCount, values='Tweet_count', names='language', width=500, height=350)
-    # fig.update_traces(textposition='inside', textinfo='percent+label')
-    #
-    # colB1, colB2 = st.beta_columns([2.5, 1])
-    #
-    # with colB1:
-    #     st.plotly_chart(fig)
-    # with colB2:
-    #     st.write(dfLangCount)
+    # num = st.slider("Select number of Rankings", 0, 50, 5)
+    num = 5
+    title = f"Top {num} Sessions Ranking By Type of Handset"
+    barChart(dfCount.head(num), title, "handset_type", "Session_count")
+
+def DataUsagePerAppChart():
+    df = loadData()
+    dfLangCount = pd.DataFrame({'Data_Usage': df.groupby(['handset_type'])['social_media_data', 'google_data',
+                                                                           'email_data', 'youtube_data', 'netflix_data',
+                                                                           'gaming_data', 'total_dl_ul'].sum()}).reset_index()
+    dfLangCount["handset_type"] = dfLangCount["handset_type"].astype(str)
+    dfLangCount = dfLangCount.sort_values("Data_Usage", ascending=False)
+    dfLangCount.loc[dfLangCount['Data_Usage'] < 10, 'handset_type'] = 'Other Handsets'
+    st.title(" User data per Handsets pie chart")
+    fig = px.pie(dfLangCount, values='Data_Usage', names='handset_type', width=500, height=350)
+    fig.update_traces(textposition='inside', textinfo='percent+label')
+
+    colB1, colB2 = st.beta_columns([2.5, 1])
+
+    with colB1:
+        st.plotly_chart(fig)
+    with colB2:
+        st.write(dfLangCount)
 
 st.markdown("<h1 style='color:#0b4eab;font-size:36px;border-radius:10px;'>Dashboard | Telecommunication Users Data Analysis </h1>", unsafe_allow_html=True)
 selectHandset()
@@ -80,4 +92,6 @@ selectHandsetManufac()
 st.title("Data Visualizations")
 with st.beta_expander("Show More Graphs"):
     stBarChart()
+    DataUsageBarChart()
+    DataUsagePerAppChart()
     # langPie()
