@@ -21,8 +21,8 @@ def selectHandset():
 
 def selectHandsetManufac():
     df = loadData()
-    manufacturer = st.multiselect("choose Handset Manufacturer", list(df['Handset Manufacturer'].unique()))
-    duration = st.multiselect("choose Time spent on session", list(df['Dur. (ms)'].unique()))
+    manufacturer = st.multiselect("Choose Handset Manufacturer", list(df['Handset Manufacturer'].unique()))
+    duration = st.multiselect("Choose Time spent on session", list(df['Dur. (ms)'].unique()))
 
     if manufacturer and not duration:
         df = df[np.isin(df, manufacturer).any(axis=1)]
