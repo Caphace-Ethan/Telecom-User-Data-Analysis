@@ -9,8 +9,8 @@ st.set_page_config(page_title="Dashboard | Telecom User Data Analysis ", layout=
 
 def loadData():
     pd.set_option('max_column', None)
-    loaded_data = pd.read_csv('data/processed_data.csv')
-    return loaded_data
+    data = pd.read_csv('data/processed_data.csv')
+    return data
 
 def selectHandset():
     df = loadData()
