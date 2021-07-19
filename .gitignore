@@ -10,3 +10,5 @@ __pycache__/
 # due to using tox and pytest
 .tox
 .cache
+.idea/
+.env
